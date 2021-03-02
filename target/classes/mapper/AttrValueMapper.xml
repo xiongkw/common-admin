@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fool3.common.admin.mapper.AttrValueMapper">
+  <resultMap id="BaseResultMap" type="com.fool3.common.admin.entity.AttrValue">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="attr_spec_id" jdbcType="BIGINT" property="attrSpecId" />
+    <result column="attr_value" jdbcType="VARCHAR" property="attrValue" />
+    <result column="attr_name" jdbcType="VARCHAR" property="attrName" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="created_by" jdbcType="BIGINT" property="createdBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="updated_by" jdbcType="BIGINT" property="updatedBy" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, attr_spec_id, attr_value, attr_name, sequence, description, status, created_time, 
+    created_by, updated_time, updated_by, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attr_value
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from attr_value
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fool3.common.admin.entity.AttrValue">
+    insert into attr_value (id, attr_spec_id, attr_value, 
+      attr_name, sequence, description, 
+      status, created_time, created_by, 
+      updated_time, updated_by, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{attrSpecId,jdbcType=BIGINT}, #{attrValue,jdbcType=VARCHAR}, 
+      #{attrName,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=BIGINT}, 
+      #{updatedTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fool3.common.admin.entity.AttrValue">
+    insert into attr_value
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="attrSpecId != null">
+        attr_spec_id,
+      </if>
+      <if test="attrValue != null">
+        attr_value,
+      </if>
+      <if test="attrName != null">
+        attr_name,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedTime != null">
+        updated_time,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="attrSpecId != null">
+        #{attrSpecId,jdbcType=BIGINT},
+      </if>
+      <if test="attrValue != null">
+        #{attrValue,jdbcType=VARCHAR},
+      </if>
+      <if test="attrName != null">
+        #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fool3.common.admin.entity.AttrValue">
+    update attr_value
+    <set>
+      <if test="attrSpecId != null">
+        attr_spec_id = #{attrSpecId,jdbcType=BIGINT},
+      </if>
+      <if test="attrValue != null">
+        attr_value = #{attrValue,jdbcType=VARCHAR},
+      </if>
+      <if test="attrName != null">
+        attr_name = #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null">
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fool3.common.admin.entity.AttrValue">
+    update attr_value
+    set attr_spec_id = #{attrSpecId,jdbcType=BIGINT},
+      attr_value = #{attrValue,jdbcType=VARCHAR},
+      attr_name = #{attrName,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=BIGINT},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

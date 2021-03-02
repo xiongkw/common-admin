@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fool3.common.admin.dao.IAttrSpecDao">
+
+    <select id="selectBySpecCode" resultType="com.fool3.common.admin.entity.AttrValue">
+        select v.attr_value, v.attr_name, v.sequence
+        from attr_spec a left outer join attr_value v on(v.attr_spec_id=a.id)
+        where a.code=#{specCode}
+        order by v.sequence
+    </select>
+
+</mapper>
